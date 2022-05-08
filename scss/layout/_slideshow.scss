@@ -5,6 +5,18 @@
     width: 100%;
     height: 80vh;
     
+    @include response(xl){
+        height: 70vh;
+    }
+    
+    @include response(lg){
+        height: 60vh;
+    }
+    
+    @include response(md){
+       height: 50vh;
+    }
+    
     &-slide {
         position: absolute;
         top: 0;
@@ -27,8 +39,13 @@
         position: absolute;
         bottom: 6rem;
         left: 6rem;
+        right: 6rem;
         max-width: 40rem;
         padding: 5rem;
+        
+        @include response(lg){
+            padding: 2rem;
+        }
         
         h2 {
             font-size: size(xl) + 1.2rem;
@@ -42,6 +59,7 @@
     }
 }
 
+//Each loop
 //$animList: 1 0s, 2 4s, 3 8s, 4 12s, 5 16s;
 //
 //@each $item in $animList {
@@ -50,11 +68,13 @@
 //    }
 //}
 
-$animList: 0s 4s 8s 12s 16s;
 
+//For Loop
+$animList: 0s 4s 8s 12s 16s;
 @for $i from 1 through length($animList)  {
     .slideshow-slide:nth-child(#{nth($i, 1)}){
         animation-delay: nth($animList, $i);  
+//        @debug 20px;
     }
 };
 
